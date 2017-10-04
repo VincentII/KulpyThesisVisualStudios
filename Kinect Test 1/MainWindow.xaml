@@ -1,0 +1,40 @@
+﻿<Window x:Class="Kinect_Test_1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kinect_Test_1"
+        mc:Ignorable="d"
+        Title="MainWindow" Width="1134" Height="442">
+    <Grid>
+
+
+        <Viewbox Margin="0,0,263,96">
+
+            <Grid>
+
+                <Image Name="camera" Width="754" Height="424"/>
+                <Canvas Name="canvas" Width="512" Height="424" Background="Black" Margin="785,0,-543,0">
+                </Canvas>
+            </Grid>
+
+
+        </Viewbox>
+
+        <Button Content="Record" Width="100" Height="40" Click="Record_Click" Margin="980,341,46,30" Background="Green"  />
+
+
+        <Label Content="Face Tracked: " HorizontalAlignment="Left" Margin="13,340,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.111,-13.077" Width="80"/>
+        <Ellipse Name="face_track_status" Fill="#000000" HorizontalAlignment="Left" Height="26" Margin="95,340,0,0" Stroke="Black" VerticalAlignment="Top" Width="26"/>
+        <Grid HorizontalAlignment="Left" Height="76" Margin="735,325,0,0" VerticalAlignment="Top" Width="223" Background="DarkCyan">
+            <Label Content="Annotations: " Margin="0,0,10,0"/>
+            <Button Content="Start" Name="annot_start" ContentStringFormat="Start" Width="60" Height="20" FontSize="10" Margin="10,20,153,36" IsEnabled="False" Click="Annot_Click"/>
+            <Button Content="Rest" Name="annot_rest" ContentStringFormat="Rest" Width="60" Height="20" FontSize="10" Margin="80,20,83,36" IsEnabled="False" Click="Annot_Click"/>
+            <Button Content="End" Name="annot_end" ContentStringFormat="End" Width="60" Height="20" FontSize="10" Margin="152,20,11,36" IsEnabled="False" Click="Annot_Click"/>
+            <Button Content="Comment" Name="annot_comment" ContentStringFormat="End" Width="60" Height="20" FontSize="10" Margin="10,46,153,10" IsEnabled="False" Click="Comment_Click"/>
+            <TextBox HorizontalAlignment="Left" Name="annot_comment_box" Height="20" Margin="80,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
+
+        </Grid>
+        <CheckBox Content="Record Video" Name="check_record_video" HorizontalAlignment="Left" Margin="595,331,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
