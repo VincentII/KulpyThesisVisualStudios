@@ -43,28 +43,28 @@ namespace Kinect_Test_1
 
                 if (!_hasEnumeratedPoints)
                 {
-                    line.Append("Time;Annotation;");
+                    line.Append("Time,Annotation,");
                     for (int i=0; i<vertices.Length;i++)
                     {
-                        line.Append(string.Format("{0};;;", keyPointsNames.ElementAt(i)));
+                        line.Append(string.Format("{0},,,", keyPointsNames.ElementAt(i)));
                     }
                     line.AppendLine();
 
-                    line.Append("T;A;");
+                    line.Append("T,A,");
                     for (int i = 0; i < vertices.Length; i++)
                     {
-                        line.Append("X;Y;Z;");
+                        line.Append("X,Y,Z,");
                     }
                     line.AppendLine();
 
                     _hasEnumeratedPoints = true;
                 }
 
-                line.Append(string.Format("{0};",DateTime.Now.ToString("HH:mm:ss")));
-                line.Append(string.Format("{0};", annot));
+                line.Append(string.Format("{0},",DateTime.Now.ToString("HH:mm:ss")));
+                line.Append(string.Format("{0},", annot));
                 for (int i = 0; i < vertices.Length; i++)
                 {
-                    line.Append(string.Format("{0};{1};{2};", vertices[i].X, vertices[i].Y, vertices[i].Z));
+                    line.Append(string.Format("{0},{1},{2},", vertices[i].X, vertices[i].Y, vertices[i].Z));
                 }
 
                 writer.Write(line);

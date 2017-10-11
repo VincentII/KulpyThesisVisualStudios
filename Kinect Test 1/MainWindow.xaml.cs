@@ -249,7 +249,7 @@ namespace Kinect_Test_1
 
                 if (_points.Count == 0)
                 {
-                    for (int index = 0; index < verts.Count; index++)
+                    for (int index = 0; index < vertices.Count(); index++)
                     {
                         Ellipse ellipse = new Ellipse
                         {
@@ -268,9 +268,9 @@ namespace Kinect_Test_1
                     }
                 }
 
-                for (int index = 0; index < verts.Count; index++)
+                for (int index = 0; index < vertices.Count(); index++)
                 {
-                    CameraSpacePoint vertice = verts.ElementAt(index);
+                    CameraSpacePoint vertice = vertices[index];
                     DepthSpacePoint point = _sensor.CoordinateMapper.MapCameraPointToDepthSpace(vertice);
 
                     if (float.IsInfinity(point.X) || float.IsInfinity(point.Y)) return;
