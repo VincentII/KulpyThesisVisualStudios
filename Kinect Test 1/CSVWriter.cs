@@ -74,7 +74,7 @@ namespace Kinect_Test_1
             return line.ToString();
 
         }
-
+        //This is edited for non-IO CSV Saving ish @Ralph
         public void Stop(List<String> list)
         {
             IsRecording = false;
