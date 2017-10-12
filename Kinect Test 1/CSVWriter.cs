@@ -23,22 +23,22 @@ namespace Kinect_Test_1
         public void Start()
         {
             IsRecording = true;
-            Folder = DateTime.Now.ToString("yyy_MM_dd_HH_mm_ss");
+            //Folder = DateTime.Now.ToString("yyy_MM_dd_HH_mm_ss");
 
-            Directory.CreateDirectory(Folder);
+            //Directory.CreateDirectory(Folder);
         }
 
-        public void UpdatePoints(CameraSpacePoint [] vertices, List<String> keyPointsNames,String annot)
+        public String UpdatePoints(CameraSpacePoint [] vertices, List<String> keyPointsNames,String annot)
         {
-            if (!IsRecording) return;
-            if (vertices == null) return;
+            if (!IsRecording) return "null";
+            if (vertices == null) return "null";
             if (annot == null)
                 annot = "";
 
-            string path = Path.Combine(Folder, _current.ToString() + ".line");
+            //string path = Path.Combine(Folder, _current.ToString() + ".line");
 
-            using (StreamWriter writer = new StreamWriter(path))
-            {
+           // using (StreamWriter writer = new StreamWriter(path))
+           // {
                 StringBuilder line = new StringBuilder();
 
                 if (!_hasEnumeratedPoints)
@@ -67,40 +67,43 @@ namespace Kinect_Test_1
                     line.Append(string.Format("{0},{1},{2},", vertices[i].X, vertices[i].Y, vertices[i].Z));
                 }
 
-                writer.Write(line);
+            //writer.Write(line);
 
-                _current++;
-            }
+            //    _current++;
+            //}
+            return line.ToString();
+
         }
 
-        public void Stop()
+        public void Stop(List<String> list)
         {
             IsRecording = false;
             _hasEnumeratedPoints = false;
+            if (list.Count == 0||list == null) return;
 
             Result = DateTime.Now.ToString("yyy_MM_dd_HH_mm_ss") + ".csv";
 
             using (StreamWriter writer = new StreamWriter(Result))
             {
-                for (int index = 0; index < _current; index++)
+                foreach (String s in list)
                 {
-                    string path = Path.Combine(Folder, index.ToString() + ".line");
+                    //string path = Path.Combine(Folder, index.ToString() + ".line");
 
-                    if (File.Exists(path))
-                    {
+                    //if (File.Exists(path))
+                    //{
                         string line = string.Empty;
 
-                        using (StreamReader reader = new StreamReader(path))
+                        //using (StreamReader reader = new StreamReader(path))
                         {
-                            line = reader.ReadToEnd();
+                            line = s;//reader.ReadToEnd();
                         }
 
                         writer.WriteLine(line);
-                    }
+                    //}
                 }
             }
 
-            Directory.Delete(Folder, true);
+            //Directory.Delete(Folder, true);
         }
     }
 }

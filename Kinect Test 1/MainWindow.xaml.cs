@@ -72,6 +72,8 @@ namespace Kinect_Test_1
         //Annotation String 
         private String _annotation = null;
 
+        //Output for CSV
+        private List<String> _outputList = new List<String>();
 
         public MainWindow()
         {
@@ -95,7 +97,7 @@ namespace Kinect_Test_1
                 _sensor = null;
             }
 
-            _csvWriter.Stop();
+            _csvWriter.Stop(null);
         }
 
 
@@ -241,7 +243,7 @@ namespace Kinect_Test_1
                 //Updating Points
                 if (_csvWriter.IsRecording)
                 {
-                   _csvWriter.UpdatePoints(vertices, _keyPointsNames, _annotation);
+                   _outputList.Add(_csvWriter.UpdatePoints(vertices, _keyPointsNames, _annotation));
 
                     if (_annotation != null)
                         _annotation = null;
@@ -294,7 +296,7 @@ namespace Kinect_Test_1
 
             if (_csvWriter.IsRecording)
             {
-                _csvWriter.Stop();
+                _csvWriter.Stop(_outputList);
 
                 _bitmapSaver.Stop();
 
@@ -318,7 +320,7 @@ namespace Kinect_Test_1
                 Enable_Buttons(false);
 
 
-                
+                _outputList = new List<string>();
             }
             else
             {
