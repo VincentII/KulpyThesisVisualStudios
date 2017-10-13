@@ -5,36 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kinect_Test_1"
         mc:Ignorable="d"
-        Title="MainWindow" Width="1134" Height="442">
+        Title="MainWindow">
     <Grid>
 
 
-        <Viewbox Margin="0,0,263,96">
+        <Viewbox Margin="10,10,10,10" >
 
             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-                <Image Name="camera" Width="754" Height="424"/>
-                <Canvas Name="canvas" Width="512" Height="424" Background="Black" Margin="785,0,-543,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.7*"></RowDefinition>
+                    <RowDefinition Height="0.3*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Image Name="camera" Width="754" Height="424" Grid.Column="0" />
+                <Canvas Name="canvas" Width="512" Height="424" Background="Black" Grid.Column="1" >
                 </Canvas>
+
+                <Grid Width="754" Grid.Column="0" Grid.Row="1">
+                    <Label Content="Face Tracked: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+                    <Ellipse Name="face_track_status" Fill="#000000" HorizontalAlignment="Left" Height="26"  Stroke="Black" VerticalAlignment="Top" Width="26" Margin="93,10,0,0"/>
+                    <CheckBox Content="Record Video" Name="check_record_video" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0"/>
+                </Grid>
+
+                <Grid Height="200" Grid.Column="1" Grid.Row="1">
+                    <Button Content="Record" Width="100" Height="40" Click="Record_Click" Background="Green" Margin="402,150,10,10"  />
+                    <Grid HorizontalAlignment="Left" Height="76" VerticalAlignment="Top" Width="223" Background="DarkCyan" Margin="10,10,0,0">
+                        <Label Content="Annotations: "  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,10,0"/>
+                        <Button Content="Start" Name="annot_start" HorizontalAlignment="Left" VerticalAlignment="Top" ContentStringFormat="Start" Width="60" Height="20" FontSize="10" Margin="10,20,153,36" IsEnabled="False" Click="Annot_Click"/>
+                        <Button Content="Rest" Name="annot_rest" HorizontalAlignment="Left" VerticalAlignment="Top" ContentStringFormat="Rest" Width="60" Height="20" FontSize="10" Margin="80,20,83,36" IsEnabled="False" Click="Annot_Click"/>
+                        <Button Content="End" Name="annot_end" HorizontalAlignment="Left" VerticalAlignment="Top" ContentStringFormat="End" Width="60" Height="20" FontSize="10" Margin="152,20,11,36" IsEnabled="False" Click="Annot_Click"/>
+                        <Button Content="Comment" Name="annot_comment" HorizontalAlignment="Left" VerticalAlignment="Top" ContentStringFormat="End" Width="60" Height="20" FontSize="10" Margin="10,46,153,10" IsEnabled="False" Click="Comment_Click"/>
+                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Name="annot_comment_box" Height="20" Margin="80,46,0,0" TextWrapping="Wrap" Width="133"/>
+
+                    </Grid>
+                </Grid>
             </Grid>
 
 
         </Viewbox>
 
-        <Button Content="Record" Width="100" Height="40" Click="Record_Click" Margin="980,341,46,30" Background="Green"  />
+        
 
 
-        <Label Content="Face Tracked: " HorizontalAlignment="Left" Margin="13,340,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.111,-13.077" Width="80"/>
-        <Ellipse Name="face_track_status" Fill="#000000" HorizontalAlignment="Left" Height="26" Margin="95,340,0,0" Stroke="Black" VerticalAlignment="Top" Width="26"/>
-        <Grid HorizontalAlignment="Left" Height="76" Margin="735,325,0,0" VerticalAlignment="Top" Width="223" Background="DarkCyan">
-            <Label Content="Annotations: " Margin="0,0,10,0"/>
-            <Button Content="Start" Name="annot_start" ContentStringFormat="Start" Width="60" Height="20" FontSize="10" Margin="10,20,153,36" IsEnabled="False" Click="Annot_Click"/>
-            <Button Content="Rest" Name="annot_rest" ContentStringFormat="Rest" Width="60" Height="20" FontSize="10" Margin="80,20,83,36" IsEnabled="False" Click="Annot_Click"/>
-            <Button Content="End" Name="annot_end" ContentStringFormat="End" Width="60" Height="20" FontSize="10" Margin="152,20,11,36" IsEnabled="False" Click="Annot_Click"/>
-            <Button Content="Comment" Name="annot_comment" ContentStringFormat="End" Width="60" Height="20" FontSize="10" Margin="10,46,153,10" IsEnabled="False" Click="Comment_Click"/>
-            <TextBox HorizontalAlignment="Left" Name="annot_comment_box" Height="20" Margin="80,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
 
-        </Grid>
-        <CheckBox Content="Record Video" Name="check_record_video" HorizontalAlignment="Left" Margin="595,331,0,0" VerticalAlignment="Top"/>
+
+        
     </Grid>
 </Window>

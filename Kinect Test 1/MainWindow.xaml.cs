@@ -372,7 +372,15 @@ namespace Kinect_Test_1
             }
         }
 
+        private void camera_ImageFailed(object sender, ExceptionRoutedEventArgs e)
+        {
 
+        }
+
+        private void camera_Initialized(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
