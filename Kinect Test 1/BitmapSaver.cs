@@ -23,7 +23,7 @@ namespace Kinect_Test_1
             Folder ="IMG-"+ DateTime.Now.ToString("yyy_MM_dd_HH_mm_ss");
 
             System.Diagnostics.Debug.Write(Folder);
-           Directory.CreateDirectory(Folder);
+            Directory.CreateDirectory(Folder);
         }
 
         public void SaveBitmap(WriteableBitmap bmpSource)

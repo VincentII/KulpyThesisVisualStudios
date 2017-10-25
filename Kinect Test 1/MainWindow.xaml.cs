@@ -41,6 +41,12 @@ namespace Kinect_Test_1
         // Required to access the face vertices.
         private FaceAlignment _faceAlignment = null;
 
+        // Required to access the face Rotation (Vincent Ortega)
+        private Vector4 _faceRotationQuaternion;
+
+        // Required to access the face pivot point (Vincent Ortega)
+        private CameraSpacePoint _headPivotPoint;
+
         // Required to access the face model points.
         private FaceModel _faceModel = null;
 
@@ -119,6 +125,7 @@ namespace Kinect_Test_1
 
                 _faceModel = new FaceModel();           
                 _faceAlignment = new FaceAlignment();
+                _faceRotationQuaternion = new Vector4();
 
 
                 _colorReader = _sensor.ColorFrameSource.OpenReader();
@@ -162,12 +169,22 @@ namespace Kinect_Test_1
 
                     Body body = bodies.Where(b => b.IsTracked).FirstOrDefault();
 
+
+                    
                     if (!_faceSource.IsTrackingIdValid)
                     {
                         if (body != null)
                         {
+
                             _faceSource.TrackingId = body.TrackingId;
                         }
+                    }
+
+                    if (body != null)
+                    {
+                        //_faceRotationQuaternion = body.JointOrientations[JointType.Neck].Orientation;
+                        //System.Diagnostics.Debug.WriteLine(body.Joints[JointType.Head].Position.X +" "+ body.Joints[JointType.Head].Position.Y + " " + body.Joints[JointType.Head].Position.Z);
+
                     }
                 }
             }
@@ -180,7 +197,8 @@ namespace Kinect_Test_1
                 
                 if (frame != null && frame.IsFaceTracked)
                 {
-                    
+                   
+
                     frame.GetAndRefreshFaceAlignmentResult(_faceAlignment);
                     //TODO ISOLATE HERE
                     UpdateFacePoints();
@@ -195,7 +213,7 @@ namespace Kinect_Test_1
             {
                 if (frame != null)
                 {
-
+                    
                     WriteableBitmap wbmp = frame.ToBitmap();
                     camera.Source = wbmp;
 
@@ -223,9 +241,16 @@ namespace Kinect_Test_1
 
             var verts = _faceModel.CalculateVerticesForAlignment(_faceAlignment);
 
+
+            _faceRotationQuaternion = _faceAlignment.FaceOrientation;
+
+            _headPivotPoint = _faceAlignment.HeadPivotPoint;
+
+
+
             CameraSpacePoint[] vertices = new CameraSpacePoint[_keyPoints.Count];
 
-            
+          
 
             for (int i = 0; i < vertices.Count(); i++)
             {
@@ -243,7 +268,7 @@ namespace Kinect_Test_1
                 //Updating Points
                 if (_csvWriter.IsRecording)
                 {
-                   _outputList.Add(_csvWriter.UpdatePoints(vertices, _keyPointsNames, _annotation));
+                   _outputList.Add(_csvWriter.UpdatePoints(vertices, _keyPointsNames, _annotation, _faceRotationQuaternion, _headPivotPoint));
 
                     if (_annotation != null)
                         _annotation = null;

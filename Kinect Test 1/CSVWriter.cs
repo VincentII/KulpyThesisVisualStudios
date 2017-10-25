@@ -10,7 +10,7 @@ namespace Kinect_Test_1
 {
     public class CSVWriter
     {
-        int _current = 0;
+        //int _current = 0;
 
         bool _hasEnumeratedPoints = false;
 
@@ -28,7 +28,7 @@ namespace Kinect_Test_1
             //Directory.CreateDirectory(Folder);
         }
 
-        public String UpdatePoints(CameraSpacePoint [] vertices, List<String> keyPointsNames,String annot)
+        public String UpdatePoints(CameraSpacePoint [] vertices, List<String> keyPointsNames,String annot, Vector4 rot, CameraSpacePoint head)
         {
             if (!IsRecording) return "null";
             if (vertices == null) return "null";
@@ -39,18 +39,19 @@ namespace Kinect_Test_1
 
            // using (StreamWriter writer = new StreamWriter(path))
            // {
-                StringBuilder line = new StringBuilder();
+            StringBuilder line = new StringBuilder();
 
-                if (!_hasEnumeratedPoints)
-                {
-                    line.Append("Time,Annotation,");
+
+            if (!_hasEnumeratedPoints)
+            {
+                    line.Append("Time,Annotation,Vector-4,,,,Head,,,");
                     for (int i=0; i<vertices.Length;i++)
                     {
                         line.Append(string.Format("{0},,,", keyPointsNames.ElementAt(i)));
                     }
                     line.AppendLine();
 
-                    line.Append("T,A,");
+                    line.Append("T,A,W,X,Y,Z,X,Y,Z,");
                     for (int i = 0; i < vertices.Length; i++)
                     {
                         line.Append("X,Y,Z,");
@@ -58,14 +59,18 @@ namespace Kinect_Test_1
                     line.AppendLine();
 
                     _hasEnumeratedPoints = true;
-                }
+            }
 
-                line.Append(string.Format("{0},",DateTime.Now.ToString("HH:mm:ss")));
-                line.Append(string.Format("{0},", annot));
-                for (int i = 0; i < vertices.Length; i++)
-                {
+
+            line.Append(string.Format("{0},",DateTime.Now.ToString("HH:mm:ss")));
+            line.Append(string.Format("{0},", annot));
+            line.Append(string.Format("{0},{1},{2},{3},", rot.W,rot.X,rot.Y,rot.Z));
+            line.Append(string.Format("{0},{1},{2},", head.X,head.Y,head.Z));
+
+            for (int i = 0; i < vertices.Length; i++)
+            {
                     line.Append(string.Format("{0},{1},{2},", vertices[i].X, vertices[i].Y, vertices[i].Z));
-                }
+            }
 
             //writer.Write(line);
 
