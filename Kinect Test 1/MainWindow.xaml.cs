@@ -81,6 +81,9 @@ namespace Kinect_Test_1
         //Output for CSV
         private List<String> _outputList = new List<String>();
 
+        //For Image Saving
+        WriteableBitmap _wbmp = null;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -214,12 +217,12 @@ namespace Kinect_Test_1
                 if (frame != null)
                 {
                     
-                    WriteableBitmap wbmp = frame.ToBitmap();
-                    camera.Source = wbmp;
+                    _wbmp = frame.ToBitmap();
+                    camera.Source = _wbmp;
 
                     if (_bitmapSaver.IsRecording)
                     {
-                        _bitmapSaver.SaveBitmap(wbmp);
+                        _bitmapSaver.SaveBitmap(_wbmp);
                     }
                    
                 }
