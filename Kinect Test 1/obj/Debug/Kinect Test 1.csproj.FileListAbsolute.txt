@@ -56,3 +56,21 @@ D:\Users\VincentII\Documents\Visual Studio 2017\sources\repos\KulpyThesisVisualS
 D:\Users\VincentII\Documents\Visual Studio 2017\sources\repos\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\Kinect Test 1.csproj.CoreCompileInputs.cache
 D:\Users\VincentII\Documents\Visual Studio 2017\sources\repos\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\Kinect Test 1.exe
 D:\Users\VincentII\Documents\Visual Studio 2017\sources\repos\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\Kinect Test 1.pdb
+C:\Users\rafe0\OneDrive\Documents\KulpyThesisVisualStudios\Kinect Test 1\bin\Debug\Kinect Test 1.exe.config
+C:\Users\rafe0\OneDrive\Documents\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\Kinect Test 1.exe
+C:\Users\rafe0\OneDrive\Documents\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\Kinect Test 1.pdb
+C:\Users\rafe0\OneDrive\Documents\KulpyThesisVisualStudios\Kinect Test 1\bin\Debug\Kinect Test 1.exe
+C:\Users\rafe0\OneDrive\Documents\KulpyThesisVisualStudios\Kinect Test 1\bin\Debug\Kinect Test 1.pdb
+C:\Users\rafe0\OneDrive\Documents\KulpyThesisVisualStudios\Kinect Test 1\bin\Debug\Microsoft.Kinect.dll
+C:\Users\rafe0\OneDrive\Documents\KulpyThesisVisualStudios\Kinect Test 1\bin\Debug\Microsoft.Kinect.Face.dll
+C:\Users\rafe0\OneDrive\Documents\KulpyThesisVisualStudios\Kinect Test 1\bin\Debug\Microsoft.Kinect.xml
+C:\Users\rafe0\OneDrive\Documents\KulpyThesisVisualStudios\Kinect Test 1\bin\Debug\Microsoft.Kinect.Face.xml
+C:\Users\rafe0\OneDrive\Documents\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\Kinect Test 1.csprojResolveAssemblyReference.cache
+C:\Users\rafe0\OneDrive\Documents\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\MainWindow.g.cs
+C:\Users\rafe0\OneDrive\Documents\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\App.g.cs
+C:\Users\rafe0\OneDrive\Documents\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\Kinect Test 1_MarkupCompile.cache
+C:\Users\rafe0\OneDrive\Documents\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\Kinect Test 1_MarkupCompile.lref
+C:\Users\rafe0\OneDrive\Documents\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\MainWindow.baml
+C:\Users\rafe0\OneDrive\Documents\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\Kinect Test 1.g.resources
+C:\Users\rafe0\OneDrive\Documents\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\Kinect2FaceHD_NET.Properties.Resources.resources
+C:\Users\rafe0\OneDrive\Documents\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\Kinect Test 1.csproj.GenerateResource.Cache

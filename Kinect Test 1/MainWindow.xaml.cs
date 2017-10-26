@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using Microsoft.Kinect;
 using Microsoft.Kinect.Face;
 using Microsoft.Win32;
+using System.Timers;
+using System.Threading;
 
 namespace Kinect_Test_1
 {
@@ -84,12 +86,18 @@ namespace Kinect_Test_1
         //For Image Saving
         WriteableBitmap _wbmp = null;
 
+        System.Timers.Timer _recordTimer = new System.Timers.Timer();
+
         public MainWindow()
         {
             InitializeComponent();
             Initialize_Sensor();
             Initialize_Key_Points();
             Initialize_Annot_Buttons();
+
+            _recordTimer.Elapsed += (sender, e) => OnTimedEvent(sender, e, _wbmp);
+            _recordTimer.Interval = 66.66667;
+            _recordTimer.Enabled = false;
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -216,15 +224,8 @@ namespace Kinect_Test_1
             {
                 if (frame != null)
                 {
-                    
                     _wbmp = frame.ToBitmap();
                     camera.Source = _wbmp;
-
-                    if (_bitmapSaver.IsRecording)
-                    {
-                        _bitmapSaver.SaveBitmap(_wbmp);
-                    }
-                   
                 }
             }
         }
@@ -349,6 +350,7 @@ namespace Kinect_Test_1
 
 
                 _outputList = new List<string>();
+                _recordTimer.Enabled = false;
             }
             else
             {
@@ -361,7 +363,19 @@ namespace Kinect_Test_1
                 button.Content = "Stop";
                 button.Background = Brushes.Red;
                 button.Foreground = Brushes.White;
+                
+                _recordTimer.Enabled = true;
             }
+        }
+
+        private void OnTimedEvent(object source, ElapsedEventArgs e, WriteableBitmap bmp)
+        {
+            Console.WriteLine("THIS THING: " + source);
+            if (_bitmapSaver.IsRecording)
+            {
+                Dispatcher.BeginInvoke(
+                    new ThreadStart(() => _bitmapSaver.SaveBitmap(bmp)));
+            }   
         }
 
         private void Update_Statuses()
