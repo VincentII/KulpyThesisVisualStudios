@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kinect_Test_1"
         mc:Ignorable="d"
-        Title="MainWindow">
+        Title="Recording Module">
     <Grid>
 
 
@@ -30,6 +30,15 @@
                     <Label Content="Face Tracked: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
                     <Ellipse Name="face_track_status" Fill="#000000" HorizontalAlignment="Left" Height="26"  Stroke="Black" VerticalAlignment="Top" Width="26" Margin="93,10,0,0"/>
                     <CheckBox Content="Record Video" Name="check_record_video" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0"/>
+
+                    <Label Content="Title: " HorizontalAlignment="Left" VerticalAlignment="Top"  Height="25" Margin="10,40,0,0" Background="Teal" Width="140"/>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Name="title_box" Height="25" Margin="150,40,0,0" TextWrapping="Wrap" Width="450"/>
+
+                    <Label Content="Gloss Translation: " HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Margin="10,70,0,0" Background="Teal" Width="140"/>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Name="gloss_box" Height="25" Margin="150,70,0,0" TextWrapping="Wrap" Width="450"/>
+
+                    <Label Content="Accurate Translation: " HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Margin="10,100,0,0" Background="Teal" Width="140"/>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Name="accurate_box" Height="25" Margin="150,100,0,0" TextWrapping="Wrap" Width="450"/>
                 </Grid>
 
                 <Grid Height="200" Grid.Column="1" Grid.Row="1">

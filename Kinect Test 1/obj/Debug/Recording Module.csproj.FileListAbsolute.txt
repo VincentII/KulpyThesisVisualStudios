@@ -1,0 +1,19 @@
+D:\Users\VincentII\Documents\Visual Studio 2017\sources\repos\KulpyThesisVisualStudios\Kinect Test 1\bin\Debug\Kinect Test 1.exe.config
+D:\Users\VincentII\Documents\Visual Studio 2017\sources\repos\KulpyThesisVisualStudios\Kinect Test 1\bin\Debug\Kinect Test 1.exe
+D:\Users\VincentII\Documents\Visual Studio 2017\sources\repos\KulpyThesisVisualStudios\Kinect Test 1\bin\Debug\Kinect Test 1.pdb
+D:\Users\VincentII\Documents\Visual Studio 2017\sources\repos\KulpyThesisVisualStudios\Kinect Test 1\bin\Debug\Microsoft.Kinect.dll
+D:\Users\VincentII\Documents\Visual Studio 2017\sources\repos\KulpyThesisVisualStudios\Kinect Test 1\bin\Debug\Microsoft.Kinect.Face.dll
+D:\Users\VincentII\Documents\Visual Studio 2017\sources\repos\KulpyThesisVisualStudios\Kinect Test 1\bin\Debug\Microsoft.Kinect.xml
+D:\Users\VincentII\Documents\Visual Studio 2017\sources\repos\KulpyThesisVisualStudios\Kinect Test 1\bin\Debug\Microsoft.Kinect.Face.xml
+D:\Users\VincentII\Documents\Visual Studio 2017\sources\repos\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\Recording Module.csprojResolveAssemblyReference.cache
+D:\Users\VincentII\Documents\Visual Studio 2017\sources\repos\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\MainWindow.g.cs
+D:\Users\VincentII\Documents\Visual Studio 2017\sources\repos\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\App.g.cs
+D:\Users\VincentII\Documents\Visual Studio 2017\sources\repos\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\Kinect Test 1_MarkupCompile.cache
+D:\Users\VincentII\Documents\Visual Studio 2017\sources\repos\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\Kinect Test 1_MarkupCompile.lref
+D:\Users\VincentII\Documents\Visual Studio 2017\sources\repos\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\MainWindow.baml
+D:\Users\VincentII\Documents\Visual Studio 2017\sources\repos\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\Kinect Test 1.g.resources
+D:\Users\VincentII\Documents\Visual Studio 2017\sources\repos\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\Kinect2FaceHD_NET.Properties.Resources.resources
+D:\Users\VincentII\Documents\Visual Studio 2017\sources\repos\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\Recording Module.csproj.GenerateResource.Cache
+D:\Users\VincentII\Documents\Visual Studio 2017\sources\repos\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\Recording Module.csproj.CoreCompileInputs.cache
+D:\Users\VincentII\Documents\Visual Studio 2017\sources\repos\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\Kinect Test 1.exe
+D:\Users\VincentII\Documents\Visual Studio 2017\sources\repos\KulpyThesisVisualStudios\Kinect Test 1\obj\Debug\Kinect Test 1.pdb
