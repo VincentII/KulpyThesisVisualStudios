@@ -17,6 +17,7 @@ using Microsoft.Kinect.Face;
 using Microsoft.Win32;
 using System.Timers;
 using System.Threading;
+using System.IO;
 
 namespace Kinect_Test_1
 {
@@ -86,6 +87,7 @@ namespace Kinect_Test_1
         //For Image Saving
         WriteableBitmap _wbmp = null;
 
+        //For timed image saving
         System.Timers.Timer _recordTimer = new System.Timers.Timer();
 
         public MainWindow()
@@ -334,17 +336,21 @@ namespace Kinect_Test_1
                 button.Background = Brushes.Green;
                 button.Foreground = Brushes.Black;
 
+
+                MessageBox.Show("Recording Finished");
+                /*
                 SaveFileDialog dialog = new SaveFileDialog
                 {
                     Filter = "Excel files|*.csv"
                 };
 
                 dialog.ShowDialog();
-
+                
                 if (!string.IsNullOrWhiteSpace(dialog.FileName))
                 {
                     System.IO.File.Copy(_csvWriter.Result, dialog.FileName);
                 }
+                */
 
                 Enable_Buttons(false);
 
@@ -354,23 +360,30 @@ namespace Kinect_Test_1
             }
             else
             {
-                _csvWriter.Start();
+                if(title_box.Text.Equals("")||title_box.Text==null)
+                    MessageBox.Show("Please input a title");
+                else if (!Directory.Exists(title_box.Text))
+                {
+                    _csvWriter.Start(title_box.Text,gloss_box.Text,accurate_box.Text);
 
-                if(check_record_video.IsChecked == true)
-                _bitmapSaver.Start();
+                    if (check_record_video.IsChecked == true)
+                        _bitmapSaver.Start(title_box.Text);
 
-                Enable_Buttons(true);
-                button.Content = "Stop";
-                button.Background = Brushes.Red;
-                button.Foreground = Brushes.White;
-                
-                _recordTimer.Enabled = true;
+                    Enable_Buttons(true);
+                    button.Content = "Stop";
+                    button.Background = Brushes.Red;
+                    button.Foreground = Brushes.White;
+
+                    _recordTimer.Enabled = true;
+                }
+                else
+                    MessageBox.Show("Title Already Exists");
             }
         }
 
         private void OnTimedEvent(object source, ElapsedEventArgs e, WriteableBitmap bmp)
         {
-            Console.WriteLine("THIS THING: " + source);
+            //Console.WriteLine("THIS THING: " + source);
             if (_bitmapSaver.IsRecording)
             {
                 Dispatcher.BeginInvoke(

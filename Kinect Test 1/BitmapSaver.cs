@@ -16,13 +16,20 @@ namespace Kinect_Test_1
 
         public string Folder { get; protected set; }
 
-        public void Start()
+        private string title=null;
+
+        public void Start(String title)
         {
             IsRecording = true;
             index = 0;
-            Folder ="IMG-"+ DateTime.Now.ToString("yyy_MM_dd_HH_mm_ss");
 
-            System.Diagnostics.Debug.Write(Folder);
+            if (title.Equals("") || title == null)
+                title = "sample";
+            this.title = title;
+
+            Folder =this.title+"\\"+ "IMG-"+ DateTime.Now.ToString("yyy_MM_dd_HH_mm_ss");
+
+            //System.Diagnostics.Debug.Write(Folder);
             Directory.CreateDirectory(Folder);
         }
 
@@ -32,7 +39,7 @@ namespace Kinect_Test_1
             // imageSerial is the serial of the sequential image
             JpegBitmapEncoder encoder = new JpegBitmapEncoder();
             encoder.Frames.Add(BitmapFrame.Create(bmpSource));
-            using (var fs = new FileStream("./"+Folder+"/IMG-" + (index++) + ".jpeg", FileMode.Create, FileAccess.Write))
+            using (var fs = new FileStream("./"+Folder+"/"+title+"-IMG-" + (index++) + ".jpeg", FileMode.Create, FileAccess.Write))
             {
                 encoder.Save(fs);
             }

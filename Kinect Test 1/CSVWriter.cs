@@ -20,12 +20,35 @@ namespace Kinect_Test_1
 
         public string Result { get; protected set; }
 
-        public void Start()
+
+        public string Translation { get; protected set; }
+
+        private string title = null;
+        private string gloss = null;
+        private string accurate = null;
+
+
+        public void Start(String title, String gloss, String accurate)
         {
             IsRecording = true;
-            //Folder = DateTime.Now.ToString("yyy_MM_dd_HH_mm_ss");
 
-            //Directory.CreateDirectory(Folder);
+            if (title.Equals("") || title == null)
+                title = "sample";
+
+            if (gloss.Equals("") || gloss == null)
+                gloss = "null";
+
+            if (accurate.Equals("") || accurate == null)
+                accurate = "null";
+
+
+            this.title = title;
+            Folder = this.title;
+
+            this.gloss = gloss;
+            this.accurate = accurate;
+
+            Directory.CreateDirectory(Folder);
         }
 
         public String UpdatePoints(CameraSpacePoint [] vertices, List<String> keyPointsNames,String annot, Vector4 rot, CameraSpacePoint head)
@@ -86,7 +109,7 @@ namespace Kinect_Test_1
             _hasEnumeratedPoints = false;
             if (list.Count == 0||list == null) return;
 
-            Result = DateTime.Now.ToString("yyy_MM_dd_HH_mm_ss") + ".csv";
+            Result = this.Folder +"\\"+this.title + "_" +DateTime.Now.ToString("yyy_MM_dd_HH_mm_ss") + ".csv";
 
             using (StreamWriter writer = new StreamWriter(Result))
             {
@@ -107,6 +130,16 @@ namespace Kinect_Test_1
                     //}
                 }
             }
+
+            Translation = this.Folder + "\\" + this.title + "_" + DateTime.Now.ToString("yyy_MM_dd_HH_mm_ss") + ".txt";
+
+            using (StreamWriter writer = new StreamWriter(Translation))
+            {
+                writer.WriteLine("Gloss:" + gloss);
+                writer.WriteLine("Accurate:" + accurate);
+            }
+
+
 
             //Directory.Delete(Folder, true);
         }
