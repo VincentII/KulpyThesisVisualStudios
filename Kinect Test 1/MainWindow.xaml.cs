@@ -90,6 +90,8 @@ namespace Kinect_Test_1
         //For timed image saving
         System.Timers.Timer _recordTimer = new System.Timers.Timer();
 
+        FrameData _currentFrameData;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -98,7 +100,7 @@ namespace Kinect_Test_1
             Initialize_Annot_Buttons();
 
             _recordTimer.Elapsed += (sender, e) => OnTimedEvent(sender, e, _wbmp);
-            _recordTimer.Interval = 66.66667;
+            _recordTimer.Interval = 31;
             _recordTimer.Enabled = false;
         }
 
@@ -272,13 +274,7 @@ namespace Kinect_Test_1
 
 
                 //Updating Points
-                if (_csvWriter.IsRecording)
-                {
-                   _outputList.Add(_csvWriter.UpdatePoints(vertices, _keyPointsNames, _annotation, _faceRotationQuaternion, _headPivotPoint));
-
-                    if (_annotation != null)
-                        _annotation = null;
-                }
+                _currentFrameData = new FrameData(vertices, _keyPointsNames, _annotation, _faceRotationQuaternion, _headPivotPoint);
 
                 if (_points.Count == 0)
                 {
@@ -388,7 +384,16 @@ namespace Kinect_Test_1
             {
                 Dispatcher.BeginInvoke(
                     new ThreadStart(() => _bitmapSaver.SaveBitmap(bmp)));
-            }   
+            }
+
+            if (_csvWriter.IsRecording)
+            {
+                Dispatcher.BeginInvoke(
+                    new ThreadStart(() => _outputList.Add(_csvWriter.UpdatePoints(_currentFrameData.Vertices, _currentFrameData.KeyPointsNames, _currentFrameData.Annotation, _currentFrameData.FaceRotationQuaternion, _currentFrameData.HeadPivotPoint))));
+
+                if (_annotation != null)
+                    _annotation = null;
+            }
         }
 
         private void Update_Statuses()
