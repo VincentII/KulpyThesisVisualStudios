@@ -59,6 +59,9 @@ namespace Kinect_Test_1
         // Used to display 1,000 points on screen.
         private List<Ellipse> _points = new List<Ellipse>();
 
+        // Used to display 1,000 points on screen.
+        private List<TextBlock> _pointTextBlocks = new List<TextBlock>();
+
 
         //This is the list of values for the points needed
         private List<int> _keyPoints = new List<int>();
@@ -160,6 +163,7 @@ namespace Kinect_Test_1
             {
                 _keyPoints.Add((int)m);
                 _keyPointsNames.Add(m.ToString());
+
             }
         }
 
@@ -284,7 +288,7 @@ namespace Kinect_Test_1
                         {
                             Width = 2.0,
                             Height = 2.0,
-                            Fill = new SolidColorBrush(Colors.Blue)
+                            Fill = new SolidColorBrush(Colors.Yellow)
                         };
 
                         _points.Add(ellipse);
@@ -297,6 +301,28 @@ namespace Kinect_Test_1
                     }
                 }
 
+                if (_pointTextBlocks.Count == 0){
+                    for (int index = 0; index < vertices.Count(); index++)
+                    {
+                        TextBlock textBlock = new TextBlock
+                        {
+                            Text = _keyPoints.ElementAt(index).ToString(),
+
+                            Foreground = new SolidColorBrush(Colors.White),
+                            TextAlignment = TextAlignment.Left,
+                            FontSize = 5
+                        };
+
+
+                        _pointTextBlocks.Add(textBlock);
+                    }
+
+                    foreach (TextBlock textBlock in _pointTextBlocks)
+                    {
+                        canvas.Children.Add(textBlock);
+                    }
+                }
+
                 for (int index = 0; index < vertices.Count(); index++)
                 {
                     CameraSpacePoint vertice = vertices[index];
@@ -306,8 +332,14 @@ namespace Kinect_Test_1
 
                     Ellipse ellipse = _points[index];
 
+
+                    TextBlock textBlock = _pointTextBlocks[index];
+
                     Canvas.SetLeft(ellipse, point.X);
                     Canvas.SetTop(ellipse, point.Y);
+
+                    Canvas.SetLeft(textBlock, point.X + 5);
+                    Canvas.SetTop(textBlock, point.Y);
                 }
 
 
