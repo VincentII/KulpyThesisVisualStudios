@@ -112,6 +112,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BitmapSaver.cs" />
+    <Compile Include="FrameData.cs" />
     <Compile Include="ColorBitmapGenerator.cs" />
     <Compile Include="CSVWriter.cs" />
     <Compile Include="MainWindow.xaml.cs">

@@ -92,7 +92,7 @@ namespace Kinect_Test_1
 
             for (int i = 0; i < vertices.Length; i++)
             {
-                    line.Append(string.Format("{0},{1},{2},", vertices[i].X, vertices[i].Y, vertices[i].Z));
+                    line.Append(string.Format("{0},{1},{2},", vertices[i].X - head.X, vertices[i].Y - head.Y, vertices[i].Z - head.Z));
             }
 
             //writer.Write(line);
